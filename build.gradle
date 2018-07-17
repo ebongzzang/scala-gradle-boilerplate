@@ -1,0 +1,49 @@
+
+buildscript {
+    ext {
+        scalaVersion = "2.12"
+        scalaVersionPatch = "6"
+        mainClass = "org.ebong2.scalagradleboilerplate.Application"
+    }
+}
+
+plugins {
+    id 'groovy'
+    id 'idea'
+    id 'scala'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'java'
+    id 'com.github.maiflai.scalatest' version '0.22'
+}
+
+group 'org.ebong2'
+version '1.0-SNAPSHOT'
+
+compileScala.targetCompatibility = "1.8"
+compileScala.sourceCompatibility = "1.8"
+
+idea {
+    project {
+        jdkName = '1.8'
+        languageLevel = '1.8'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    compile "org.scala-lang:scala-library:${scalaVersion}.${scalaVersionPatch}"
+    compile "com.typesafe.scala-logging:scala-logging_${scalaVersion}:3.9.0"
+
+    testCompile "org.scalatest:scalatest_${scalaVersion}:3.0.5"
+    testCompile "org.scalactic:scalactic_${scalaVersion}:3.0.5"
+    testCompile "org.scalamock:scalamock_${scalaVersion}:4.1.0"
+    testCompile ("com.github.johnreedlol:scala-trace-debug_${scalaVersion}:4.5.0") {
+        exclude module: "scala-xml_${scalaVersion}"
+    }
+}
