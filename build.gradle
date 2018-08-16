@@ -11,7 +11,6 @@ plugins {
     id 'groovy'
     id 'idea'
     id 'scala'
-    id 'io.franzbecker.gradle-lombok' version '1.14'
     id 'java'
     id 'com.github.maiflai.scalatest' version '0.22'
 }
